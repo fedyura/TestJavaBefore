@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class type ="ru.mail.projects.resources.DbConnectionResource">
+    <username>root</username>
+    <password>ER2T7093</password>
+    <url>jdbc:mysql://localhost:3306/UsersDb</url>
+    <driver>com.mysql.jdbc.Driver</driver>
+</class>
+
