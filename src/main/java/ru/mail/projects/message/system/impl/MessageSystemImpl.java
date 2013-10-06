@@ -28,7 +28,7 @@ public class MessageSystemImpl implements MessageSystem {
 		//Создаем ссылку на ту очередь, в которую надо записать сообщение
 		//В какую очередь записать сообщение определяется адресом получателя
 		Queue<Msg> messageQueue = messages.get (message.getTo());  
-		messageQueue.add (message);
+		if (messageQueue != null) messageQueue.add (message);
 	}
 	
 	public void execForAbonent (Abonent abonent) {

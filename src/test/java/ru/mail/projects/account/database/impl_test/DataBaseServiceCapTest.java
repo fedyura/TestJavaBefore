@@ -33,6 +33,7 @@ public class DataBaseServiceCapTest {
 	@Test
     public void CreateServicesTest() {
 		
+		DatabaseServiceCap.count = 0;
 		DatabaseServiceCap dbcap1 = new DatabaseServiceCap(context); 
 		DatabaseServiceCap dbcap2 = new DatabaseServiceCap(context);
 				
@@ -116,9 +117,4 @@ public class DataBaseServiceCapTest {
 		Assert.assertEquals(sId, msgUpdUserId2.getSession());
 		Assert.assertEquals(dbcap1.getCurUserId(), msgUpdUserId2.getUserId().getLong());
 	}
-	
-	
-	
-	
-	
 }

@@ -124,7 +124,7 @@ public class FrontendImpl extends AbstractHandler implements Runnable, Frontend 
 	}
 	
 	public void startGame (Request baseRequest, HttpServletRequest request,
-									HttpServletResponse response) throws IOException {
+							HttpServletResponse response) throws IOException {
 		
 		String IsGame = request.getParameter("StGame");
 		String Sess = request.getParameter("Id");

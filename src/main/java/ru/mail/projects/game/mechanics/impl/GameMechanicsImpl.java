@@ -27,7 +27,7 @@ public class GameMechanicsImpl implements Runnable, GameMechanics{
 	private  String name;
 	private static int TICK_TIME = 100;
 	private Logger log = Logger.getLogger(GameMechanicsImpl.class.getName());
-	private static AtomicInteger gameSessId = new AtomicInteger ();
+	public static AtomicInteger gameSessId = new AtomicInteger ();
 	
 	private MessageSystem MsgSystem;
 	static ResourceSystem localRs;
@@ -66,14 +66,14 @@ public class GameMechanicsImpl implements Runnable, GameMechanics{
 	
 	public void DoProgress (UserSession userSessClick) {
 		
-		
 		GameSession curGameSess = gameSessions.get(userSessClick.IdGameSession);
 		if (curGameSess.gameState == GameState.endedFinished) {
+			System.out.println("YYY");
 			return;
 		}
 		
 		userSessClick.clickByUser += 1;
-		if (curGameSess.getFirstUserId() == userSessClick) curGameSess.SetClickedByEnemyNumSecond();
+		if (curGameSess.getFirstUserId() == userSessClick) curGameSess.SetClickedByEnemyNumSecond(); 
 		else curGameSess.SetClickedByEnemyNumFirst();
 	}
 	

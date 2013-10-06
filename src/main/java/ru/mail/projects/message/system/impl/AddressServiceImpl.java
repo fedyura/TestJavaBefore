@@ -1,10 +1,8 @@
 package ru.mail.projects.message.system.impl;
 
-import java.lang.reflect.Constructor;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
-import ru.mail.projects.account.database.impl.DatabaseServiceHibernate;
 import ru.mail.projects.account.database.impl.DatabaseServiceImpl;
 import ru.mail.projects.base.Abonent;
 import ru.mail.projects.base.Address;
@@ -36,8 +34,6 @@ public class AddressServiceImpl implements AddressService {
 			else
 				if(className == Abonents.DatabaseService.toString())
 					Name = className + (sessionId.getLong() % DatabaseServiceImpl.count); 
-	
-		
 				
 	    return addresses.get (Name);
 	}

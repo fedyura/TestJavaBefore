@@ -69,5 +69,31 @@ public class FrontEndImplTest {
 		
 		frEnd1.updateUserId(sessionId1, userId1);
 		Assert.assertEquals(new Integer(-1), frEnd1.sessions.get(sessionId1.getLong()).userId.getLong());
+		
+		frEnd1.replicateFromGM();
+	}
+	
+	@Test(dependsOnMethods = { "FrontEndImplConstruct", "updateUserIdTest" })
+	public void showStartGameTest() {
+		
+		FrontendImpl frEnd1 = new FrontendImpl(context);
+		
+		UserSession UsSess1 = new UserSession();
+		UserSession UsSess2 = new UserSession();
+		UsSess1.userName = "Yura";
+		UsSess2.userName = "Roma";
+		int idGameSession = 7;
+		int wUs = FrontendImpl.waitUsersNumber.get();
+		frEnd1.showStartedGame(UsSess1, UsSess2, idGameSession);
+		
+		Assert.assertEquals(true, UsSess1.game_state);
+		Assert.assertEquals(true, UsSess2.game_state);
+		Assert.assertEquals(false, UsSess1.is_wait);
+		Assert.assertEquals(false, UsSess2.is_wait);
+		
+		Assert.assertEquals(UsSess2.userName, UsSess1.enemyName);
+		Assert.assertEquals(UsSess1.userName, UsSess2.enemyName);
+		Assert.assertEquals(UsSess1.IdGameSession, idGameSession);
+		Assert.assertEquals(FrontendImpl.waitUsersNumber.get(), wUs - 2);
 	}
 }

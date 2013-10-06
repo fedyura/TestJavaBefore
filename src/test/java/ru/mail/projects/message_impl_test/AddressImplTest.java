@@ -5,7 +5,7 @@ import junit.framework.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ru.mail.projects.account.database.impl.DatabaseServiceImpl;
+import ru.mail.projects.account.database.impl.DatabaseServiceCap;
 import ru.mail.projects.base.Address;
 import ru.mail.projects.base.MessageSystem;
 import ru.mail.projects.base.ResourceSystem;
@@ -33,9 +33,6 @@ public class AddressImplTest {
 		
 		addr = ai.getAddress("GameMechanics", sessionId);
 		Assert.assertEquals("GameMechanics" + (sessionId.getLong() % GameMechanicsImpl.count), ai.getName());
-		
-		addr = ai.getAddress("DatabaseService", sessionId);
-		Assert.assertEquals("DatabaseService" + (sessionId.getLong() % DatabaseServiceImpl.count), ai.getName());
 	}
 	
 	@BeforeTest
@@ -52,8 +49,8 @@ public class AddressImplTest {
     	context.add(ResourceSystem.class, rsSystem);
     	
     	FrontendImpl frEnd = new FrontendImpl (context);
-    	DatabaseServiceImpl AccSer  = new DatabaseServiceImpl(context);
-    	DatabaseServiceImpl AccSer2 = new DatabaseServiceImpl(context);	
+    	DatabaseServiceCap AccSer  = new DatabaseServiceCap(context);
+    	DatabaseServiceCap AccSer2 = new DatabaseServiceCap(context);	
     	GameMechanicsImpl Gm = new GameMechanicsImpl (context); 
 	}
 }

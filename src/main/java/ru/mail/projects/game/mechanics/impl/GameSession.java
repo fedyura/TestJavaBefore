@@ -10,6 +10,7 @@ import ru.mail.projects.utils.GameId;
 import ru.mail.projects.utils.LongId;
 
 public class GameSession {
+	
 	private LongId<GameId> gameId;
 	static AtomicInteger gameSessNum = new AtomicInteger();
 	private UserSession firstUserId;
@@ -34,6 +35,13 @@ public class GameSession {
 		};
 		
 		timer.schedule( task, usr.getPlayTime());  //Время одной игры
+	}
+	
+	public GameSession(int idGame) {
+		
+		gameSessNum.incrementAndGet();
+		startTime = 0;
+		gameId = new LongId<GameId>(idGame);
 	}
 
 	public void setGameState(GameState newGameState){

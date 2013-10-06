@@ -15,6 +15,8 @@ import ru.mail.projects.utils.SessionId;
 import ru.mail.projects.utils.ThreadHelper;
 import ru.mail.projects.utils.UserId;
 
+import com.google.inject.Inject;
+
 public class DatabaseServiceCap implements Runnable, DatabaseService {
 
 	public static int count = 0; //рефакторинг  как в dataserviceImpl

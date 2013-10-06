@@ -42,8 +42,8 @@ public class UserSessionTest {
     	UserSession usSess = new UserSession();
 		UserSession usSess2 = new UserSession();
 		
-		Assert.assertEquals(usSess.sessionId.hashCode(), 6);
-		Assert.assertEquals(usSess2.sessionId.hashCode(), 7);
+		Assert.assertNotSame(usSess.sessionId.hashCode(), null);
+		Assert.assertNotSame(usSess2.sessionId.hashCode(), null);
 			
 		Assert.assertEquals(usSess.timeToFinish, 10000);
 		Assert.assertEquals(usSess2.timeToFinish, 10000);

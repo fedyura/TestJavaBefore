@@ -15,7 +15,6 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.webapp.WebAppContext;
 
-import ru.mail.projects.account.database.impl.DatabaseServiceHibernate;
 import ru.mail.projects.account.database.impl.DatabaseServiceImpl;
 import ru.mail.projects.base.MessageSystem;
 import ru.mail.projects.base.ResourceSystem;
