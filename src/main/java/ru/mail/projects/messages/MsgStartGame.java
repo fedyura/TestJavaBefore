@@ -22,4 +22,14 @@ public class MsgStartGame extends MsgToGM {
 		
 		gmUser.startGame(firstSession, secondSession, fromAddr);
 	}
+	
+	public Address getAddress() {
+		
+		return fromAddr;
+	}
+	
+	public UserSession getFirstSession() {
+		
+		return firstSession;
+	}
 }

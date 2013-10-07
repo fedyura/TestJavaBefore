@@ -13,7 +13,7 @@ public class MsgGameStarted extends MsgToFrontend {
 	final private UserSession secondSessionId;
 	final private AtomicInteger gameSessionId;
 	
-	public MsgGameStarted (Address from, Address to, 
+	public MsgGameStarted(Address from, Address to, 
 						   UserSession firstSess, UserSession secSess, AtomicInteger gameSessId) {
 		
 		super (from, to);
@@ -26,4 +26,15 @@ public class MsgGameStarted extends MsgToFrontend {
 		
 		frontend.showStartedGame(firstSessionId, secondSessionId, gameSessionId.get());
 	}
+	
+	public UserSession getFirstSession() {
+		
+		return firstSessionId;
+	}
+	
+	public AtomicInteger getGameSessionId() {
+		
+		return gameSessionId;  
+	}
+	
 }

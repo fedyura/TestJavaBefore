@@ -24,5 +24,20 @@ public class MsgGetUserId extends MsgToAccountServ {
 	public void exec(DatabaseService accserv) {
 		accserv.FindUser(sessionId, userName, from);
 	}
+	
+	public String getName() {
+		
+		return userName;
+	}
+	
+	public LongId<SessionId> getSession() {
+		
+		return sessionId;
+	}
+	
+	public Address getAddress() {
+		
+		return from;
+	}
 
 }

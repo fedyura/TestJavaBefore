@@ -47,7 +47,6 @@ public class ResourceSystemImpl implements ResourceSystem{
 			while (iterator.hasNext()) {
 					
 					parser.parse(new File(tmpString = iterator.next()), saxHandler);	
-					
 					resources.put(tmpString, (Resource)saxHandler.getObject());
 				}
 			}

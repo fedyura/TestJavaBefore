@@ -2,6 +2,7 @@
 <suite name="Suite" parallel="false">
   <test name="Test">
     <classes>
+      <class name="ru.mail.projects.vfs_test.VfsTest"/>
       <class name="ru.mail.projects.base_test.AddressTest"/>
       <class name="ru.mail.projects.frontend.impl_test.FrontEndImplTest"/>
       <class name="ru.mail.projects.frontend.impl_test.UserSessionTest"/>
@@ -15,6 +16,11 @@
       <class name="ru.mail.projects.messages_test.MsgAddUserIdTest"/>
       <class name="ru.mail.projects.messages_test.MsgClickTest"/>
       <class name="ru.mail.projects.messages_test.MsgUpdateUserIdTest"/>
+            
+      <class name="ru.mail.projects.messages_test.MsgGameStartedTest"/>
+      <class name="ru.mail.projects.messages_test.MsgGetUserIdTest"/>
+      <class name="ru.mail.projects.messages_test.MsgStartGameTest"/>
+      
       <class name="ru.mail.projects.utils_test.ContextTest"/>
       <class name="ru.mail.projects.utils_test.LongIdTest"/>
       <class name="ru.mail.projects.utils_test.ThreadHelperTest"/>
