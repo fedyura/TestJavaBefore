@@ -3,19 +3,12 @@ package ru.mail.projects.main;
 //import java.util.logging.*;
 //import java.util.*;
 //import java.lang.*;
-import java.io.File;
-import java.net.URL;
-//import java.util.logging.Handler;
-
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.DefaultHandler;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
-import org.eclipse.jetty.server.nio.SelectChannelConnector;
-import org.eclipse.jetty.webapp.WebAppContext;
 
-import ru.mail.projects.account.database.impl.DatabaseServiceImpl;
+import ru.mail.projects.account.database.impl.DatabaseServiceHibernate;
 import ru.mail.projects.base.MessageSystem;
 import ru.mail.projects.base.ResourceSystem;
 import ru.mail.projects.base.VFS;
@@ -25,6 +18,7 @@ import ru.mail.projects.message.system.impl.MessageSystemImpl;
 import ru.mail.projects.resource.system.impl.ResourceSystemImpl;
 import ru.mail.projects.utils.Context;
 import ru.mail.projects.vfs.impl.VFSImpl;
+//import java.util.logging.Handler;
 
 public class Main 
 {
@@ -41,8 +35,10 @@ public class Main
     	rsSystem.loadResources();
     	context.add(ResourceSystem.class, rsSystem);
     	
-    	DatabaseServiceImpl AccSer  = new DatabaseServiceImpl(context);
-    	DatabaseServiceImpl AccSer2 = new DatabaseServiceImpl(context);	
+    	//DatabaseServiceImpl AccSer  = new DatabaseServiceImpl(context);
+    	//DatabaseServiceImpl AccSer2 = new DatabaseServiceImpl(context);	
+    	DatabaseServiceHibernate AccSer = new DatabaseServiceHibernate(context);
+    	DatabaseServiceHibernate AccSer2 = new DatabaseServiceHibernate(context);
     	FrontendImpl frEnd = new FrontendImpl (context);
     	GameMechanicsImpl Gm = new GameMechanicsImpl (context); 
     	
@@ -55,7 +51,7 @@ public class Main
     	(new Thread(AccSer)).start();
     	(new Thread(Gm)).start();
     	
-    	Server server = new Server(8081);
+    	Server server = new Server(8082);
     	ResourceHandler resource_handler = new ResourceHandler();
     	resource_handler.setDirectoriesListed(true);
     	resource_handler.setResourceBase("static");

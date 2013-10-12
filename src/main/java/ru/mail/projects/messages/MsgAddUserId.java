@@ -1,6 +1,5 @@
 package ru.mail.projects.messages;
 
-import ru.mail.projects.account.database.impl.DatabaseServiceImpl;
 import ru.mail.projects.base.Address;
 import ru.mail.projects.base.DatabaseService;
 import ru.mail.projects.utils.LongId;

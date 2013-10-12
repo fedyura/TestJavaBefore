@@ -28,12 +28,18 @@ public class UserSession {
 		sessNum.incrementAndGet();
 		sessionId = new LongId<SessionId> (sessNum.get());
 		usr = (UserSessResource)FrontendImpl.localRs.getResource("./resources/userSess.xml"); 
-		timeToFinish = usr.getPlayTime(); //Время игры в милисекундах
+		if (usr != null) timeToFinish = usr.getPlayTime(); //Время игры в милисекундах
 		clickByUser = 0;
 		clickedByEnemy = 0;
 	}
 	
 	public static int getPlayTime(){
-		return usr.getPlayTime();
+		if (usr != null) return usr.getPlayTime();
+		else return 0;
+	}
+	
+	public LongId<SessionId> getSessionId() {
+		
+		return sessionId;
 	}
 }

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
-import ru.mail.projects.account.database.impl.DatabaseServiceImpl;
 import ru.mail.projects.base.Address;
 import ru.mail.projects.base.Frontend;
 import ru.mail.projects.base.MessageSystem;
@@ -48,7 +47,7 @@ public class FrontendImpl extends AbstractHandler implements Runnable, Frontend 
 	private static PageGeneratorImpl PageGen = new PageGeneratorImpl ();
 	static ResourceSystem localRs;
 	
-	enum AuthorState { End, NotEnd; }  
+	public enum AuthorState { End, NotEnd; }  
 	
 	
 	public FrontendImpl(Context context) {
@@ -83,12 +82,14 @@ public class FrontendImpl extends AbstractHandler implements Runnable, Frontend 
 		if (userSes == null) {
 			System.out.println("Error!!!");
 			System.out.println(sessionId.getLong());
+			return;
 		}
 
 		if (userId != null)
 			userSes.userId = userId;
 		else
 			userSes.userId = new LongId<UserId>(-1); // Это означает ошибку
+			
 	}
 	
 	//Показывает, что игра началась
@@ -142,6 +143,7 @@ public class FrontendImpl extends AbstractHandler implements Runnable, Frontend 
 			PageGen.generateGamePage(sessions.get(idSess.getLong()), response, baseRequest);
 			return;
 		}
+		
 		if (IsGame.equals("1") && usSess.is_wait == false) {
 			
 			waitUsersNumber.incrementAndGet();
@@ -179,6 +181,7 @@ public class FrontendImpl extends AbstractHandler implements Runnable, Frontend 
 		String RegLogin = request.getParameter("Reglogin");
 		
 		//Это выводится первоначально при регистрации
+		
 		if (request.getParameter("StGame") != null || request.getParameter("PlayGame") != null || 
 			request.getParameter("ContinueGame") != null)
 			return AuthorState.End; 
@@ -188,7 +191,7 @@ public class FrontendImpl extends AbstractHandler implements Runnable, Frontend 
 		//Делаем авторизацию
 		else if (Login != null) autorizeUser (baseRequest, request, response, Login);
 		//Делаем регистрацию
-		else if (RegLogin != null) registrateUser (baseRequest, request, response, RegLogin);
+		else registrateUser (baseRequest, request, response, RegLogin);
 		return AuthorState.NotEnd;
 	}
 	
@@ -249,5 +252,9 @@ public class FrontendImpl extends AbstractHandler implements Runnable, Frontend 
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public LongId<SessionId> getWaitSess() {
+		return waitSess;
 	}
 }

@@ -4,5 +4,8 @@
     <password>ER2T7093</password>
     <url>jdbc:mysql://localhost:3306/UsersDb</url>
     <driver>com.mysql.jdbc.Driver</driver>
+    <hibernateDialect>org.hibernate.dialect.MySQLDialect</hibernateDialect>
+    <hibernateShowSql>true</hibernateShowSql>
+    <hibernateHbm2ddlAuto>update</hibernateHbm2ddlAuto>
 </class>
 

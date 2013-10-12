@@ -7,8 +7,10 @@ import junit.framework.Assert;
 import org.testng.annotations.Test;
 
 import ru.mail.projects.base.Address;
+import ru.mail.projects.frontend.impl.FrontendImpl;
 import ru.mail.projects.frontend.impl.UserSession;
 import ru.mail.projects.messages.MsgGameStarted;
+import ru.mail.projects.utils.Context;
 
 public class MsgGameStartedTest {
 	

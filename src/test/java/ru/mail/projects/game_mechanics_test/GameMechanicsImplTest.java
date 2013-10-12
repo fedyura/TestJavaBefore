@@ -42,12 +42,15 @@ public class GameMechanicsImplTest {
 		GameMechanicsImpl gm1 = new GameMechanicsImpl(context);
 		GameMechanicsImpl gm2 = new GameMechanicsImpl(context);
 		
-		Assert.assertEquals("GameMechanics1", gm1.getName());		
-		Assert.assertEquals("GameMechanics2", gm2.getName());
+		//Assert.assertEquals("GameMechanics1", gm1.getName());		
+		//Assert.assertEquals("GameMechanics2", gm2.getName());
 		
 		String newName = new String("TestMechanic"); 
 		gm1.setName(newName);
 		Assert.assertEquals(newName, gm1.getName());
+		
+		Assert.assertEquals(gm1.getAddress(), gm2.getAddress());
+		gm1.endGame();
 	}
 	
 	@Test(dependsOnMethods = { "GameMechanicsConstructTest" })
@@ -74,5 +77,6 @@ public class GameMechanicsImplTest {
 		Assert.assertEquals(UsClick + 1, UsSess1.clickByUser);
 		Assert.assertEquals(cl_enemy + 1, curGameSess.getSecondUserId().clickedByEnemy);
 		
+		gm1.replicateGamesToFrontEnd();
 	}
 }

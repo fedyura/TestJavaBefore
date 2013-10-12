@@ -16,5 +16,11 @@ public class GameSessionTest {
 		Assert.assertEquals(id_game, gs1.getGameId().hashCode());
 		Assert.assertEquals(0, gs1.getStartTime());
 		
+		GameSession gs2 = new GameSession(5);
+		Assert.assertEquals(gs2.getStartTime(), 0);
+		int time = 10;
+		gs2.setStartTime(time);
+		Assert.assertEquals(gs2.getStartTime(), 10);
+		Assert.assertNotNull(gs2.getGameId());
 	}
 }

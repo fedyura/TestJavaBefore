@@ -68,7 +68,6 @@ public class GameMechanicsImpl implements Runnable, GameMechanics{
 		
 		GameSession curGameSess = gameSessions.get(userSessClick.IdGameSession);
 		if (curGameSess.gameState == GameState.endedFinished) {
-			System.out.println("YYY");
 			return;
 		}
 		

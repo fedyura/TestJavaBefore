@@ -3,7 +3,7 @@ package ru.mail.projects.message.system.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import ru.mail.projects.account.database.impl.DatabaseServiceImpl;
+import ru.mail.projects.account.database.impl.DatabaseServiceHibernate;
 import ru.mail.projects.base.Abonent;
 import ru.mail.projects.base.Address;
 import ru.mail.projects.base.AddressService;
@@ -32,10 +32,13 @@ public class AddressServiceImpl implements AddressService {
 			if(className == Abonents.GameMechanics.toString())
 				Name = className + (sessionId.getLong() % GameMechanicsImpl.count);
 			else
-				if(className == Abonents.DatabaseService.toString())
-					Name = className + (sessionId.getLong() % DatabaseServiceImpl.count); 
+				if(className == Abonents.DatabaseService.toString()) {
+					Name = className + (sessionId.getLong() % DatabaseServiceHibernate.count);
+				}
 				
-	    return addresses.get (Name);
+	    //System.out.println(Name);
+		return addresses.get (Name);
+	    
 	}
 	public void SetAddress (Abonent abonent) {
 		addresses.put(abonent.getName(), abonent.getAddress());

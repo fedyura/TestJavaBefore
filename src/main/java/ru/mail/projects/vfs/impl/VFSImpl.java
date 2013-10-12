@@ -124,6 +124,10 @@ public class VFSImpl implements VFS {
 		} catch (CharacterCodingException e) {
 			e.printStackTrace();
 		}
+		 catch (Exception e) {
+			 e.printStackTrace();
+		 }
+		 
 		 return resString;
 	}
 

@@ -9,7 +9,7 @@ import ru.mail.projects.game.mechanics.impl.GameState;
 public class GameStateTest {
   
 	@Test
-	public void GameStateTest() {
+	public void ConstrGameStateTest() {
 		
 		GameState gs = GameState.started;
 		Assert.assertEquals("Game started!", gs.toString());

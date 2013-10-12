@@ -123,6 +123,7 @@ public class PageGeneratorImpl implements PageGenerator {
 										  Request baseRequest) throws IOException {
 		
 		generateHeader (response, baseRequest);
+		
 		response.getWriter().println("<body>");
 		response.getWriter().println("<h1 align = 'center'> Вход в игру </h1> ");
 		response.getWriter().println("<form id  = 'Autorform' method = 'POST'>");
@@ -206,6 +207,11 @@ public class PageGeneratorImpl implements PageGenerator {
 	public void generateGamePage (UserSession UserSes, HttpServletResponse response,
 			  Request baseRequest) throws IOException {
 		
+		if (UserSes == null)
+		{
+			response.getWriter().println("<b> Error! Session not found </b>");
+			return;
+		}
 		if (UserSes.timeToFinish > 0) generateStartGamePage (UserSes, response, baseRequest);
 		else if (UserSes.clickByUser > UserSes.clickedByEnemy) generateWinPage (UserSes, response, baseRequest);
 		else if (UserSes.clickByUser < UserSes.clickedByEnemy) generateLostPage (UserSes, response, baseRequest);

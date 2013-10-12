@@ -12,12 +12,12 @@ import javax.persistence.Table;
 public class UsersDataSet {
 
 	@Id
-	@Column(name = "idUsers")
+	@Column(name="idUsers")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "Name")
-	private String name;
+	@Column(name="Name")
+	private String Name;
 	
 	@Column(name = "GameNum")
 	private int GameNum;
@@ -31,18 +31,18 @@ public class UsersDataSet {
 	public UsersDataSet (int id, String name) {
 		
 		this.id = id;
-		this.name = name;
+		this.Name = name;
 	}
 	
 	public UsersDataSet(String name) {
 		
 		this.id = -1; 
-		this.name = name; 
+		this.Name = name; 
 	}
 
 	public String getName() {
 		
-		return name;
+		return Name;
 	}
 	
 	public int getId() {
