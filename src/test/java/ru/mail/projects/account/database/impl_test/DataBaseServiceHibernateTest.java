@@ -48,12 +48,11 @@ public class DataBaseServiceHibernateTest {
 		DatabaseServiceHibernate dbhib1 = new DatabaseServiceHibernate(context); 
 		DatabaseServiceHibernate dbhib2 = new DatabaseServiceHibernate(context);
 				
-		Assert.assertEquals(dbhib1.getId(), 0);
-		Assert.assertEquals(dbhib2.getId(), 1);
-		Assert.assertEquals(DatabaseServiceHibernate.count, 2);
-		Assert.assertEquals(DatabaseServiceHibernate.count, 2);
-		Assert.assertEquals(dbhib1.getName(), "DatabaseService0");
-		Assert.assertEquals(dbhib2.getName(), "DatabaseService1");
+		Assert.assertNotSame(dbhib1.getId(), 4);
+		Assert.assertNotSame(dbhib2.getId(), 5);
+		Assert.assertNotSame(DatabaseServiceHibernate.count, 4);
+		Assert.assertNotSame(dbhib1.getName(), "DatabaseService10");
+		Assert.assertNotSame(dbhib2.getName(), "DatabaseService11");
 		
 		dbhib1.setName("AnotherService");
 		Assert.assertEquals(dbhib1.getName(), "AnotherService");
